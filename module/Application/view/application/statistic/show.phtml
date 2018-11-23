@@ -1,0 +1,9 @@
+<?php $this->headTitle('Książki'); ?>
+<h1>Lista książek</h1>
+<h2>Listing 1</h2>
+
+<?= $this->partial('application/partials/table', ['books' => $this->firstResults]); ?>
+
+<h2>Listing 2</h2>
+
+<?= $this->partial('application/partials/table', ['books' => $this->secondResults]); ?>
