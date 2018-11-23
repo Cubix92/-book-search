@@ -19,7 +19,7 @@ class StatisticController extends AbstractActionController
     {
         /**
          * gdyby wejscie pochodziło od użytkownika tutaj bym je przefiltrował i zwalidował,
-         * dodatkowo tutaj tworzyłbym obiekt StatisticParameters.
+         * dodatkowo tutaj tworzyłbym obiekt StatisticContainer przy pomocy parsera.
         */
         return new ViewModel([
             'firstResults' => $this->statisticService->showStatistics('ZieLoNa MiLa|age>30'),

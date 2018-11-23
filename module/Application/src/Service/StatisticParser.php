@@ -8,7 +8,7 @@ class StatisticParser
 
     private $container;
 
-    public function parse(string $parameter)
+    public function parse(string $parameter): StatisticContainer
     {
         $this->container = new StatisticContainer();
         $parameters = explode('|', $parameter);
