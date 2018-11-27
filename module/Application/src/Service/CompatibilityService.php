@@ -12,7 +12,7 @@ class CompatibilityService
     public function getCompatibilityOf(string $first, string $second): float
     {
         $percentage = 0;
-        similar_text($first, $second, $percentage);
+        similar_text(strtolower($first), strtolower($second), $percentage);
 
         return $percentage;
     }
