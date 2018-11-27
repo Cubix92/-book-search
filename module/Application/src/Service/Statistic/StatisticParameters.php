@@ -4,7 +4,7 @@ namespace Application\Service\Statistic;
 
 use ArrayAccess;
 
-class StatisticParameters implements ArrayAccess
+final class StatisticParameters implements ArrayAccess
 {
     private $container = [];
 

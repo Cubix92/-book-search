@@ -4,7 +4,7 @@ namespace Application\Service\Statistic;
 
 use Application\Model\Book;
 
-class StatisticViewModel
+final class StatisticViewModel
 {
     /** @var string $name */
     private $name;
