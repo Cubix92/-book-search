@@ -2,29 +2,29 @@
 
 namespace Application\Service;
 
+use Application\Service\Statistic\StatisticParameters;
+
 class StatisticParser
 {
     const BOTTOM_RANGE = '<';
 
-    private $container;
-
-    public function parse(string $parameter): StatisticContainer
+    public function parse(string $parameter): StatisticParameters
     {
-        $this->container = new StatisticContainer();
-        $parameters = explode('|', $parameter);
+        $statisticParameters = new StatisticParameters();
+        $stringParameters = explode('|', $parameter);
 
-        $this->prepareName($parameters[0]);
-        $this->prepareAge($parameters[1]);
+        $this->prepareName($statisticParameters, $stringParameters[0]);
+        $this->prepareAge($statisticParameters, $stringParameters[1]);
 
-        return $this->container;
+        return $statisticParameters;
     }
 
-    protected function prepareName(string $nameParam): void
+    protected function prepareName(StatisticParameters $container, string $nameParam): void
     {
-        $this->container['name'] = strtolower($nameParam);
+        $container['name'] = strtolower($nameParam);
     }
 
-    protected function prepareAge(string $ageParam): void
+    protected function prepareAge(StatisticParameters $container, string $ageParam): void
     {
         $charactersSet = str_split($ageParam);
         $result = 0;
@@ -36,9 +36,9 @@ class StatisticParser
         }
 
         if (strstr($ageParam, self::BOTTOM_RANGE)) {
-            $this->container['maxAge'] = (int) $result;
+            $container['maxAge'] = (int) $result;
         } else {
-            $this->container['minAge'] = (int) $result;
+            $container['minAge'] = (int) $result;
         }
     }
 };
