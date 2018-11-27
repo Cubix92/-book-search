@@ -34,7 +34,9 @@ return [
     'service_manager' => [
         'factories' => [
             Service\StatisticService::class => Factory\StatisticServiceFactory::class,
-            Service\StatisticParser::class => InvokableFactory::class
+            Service\StatisticParser::class => InvokableFactory::class,
+            Service\CompatibilityService::class => InvokableFactory::class,
+            Service\AgesService::class => InvokableFactory::class
         ]
     ],
     'view_manager' => [

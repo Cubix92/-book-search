@@ -5,7 +5,7 @@ namespace Application\Service;
 use Application\Model\Book;
 use Application\Model\Review;
 use Application\Repository\BookRepository;
-use Application\Service\Book\BookDTO;
+use Application\Service\Statistic\StatisticViewModel;
 
 class StatisticService
 {
@@ -13,10 +13,20 @@ class StatisticService
 
     protected $statisticParser;
 
-    public function __construct(BookRepository $bookRepository, StatisticParser $statisticParser)
-    {
+    protected $compatbilityService;
+
+    protected $agesService;
+
+    public function __construct(
+        BookRepository $bookRepository,
+        StatisticParser $statisticParser,
+        CompatibilityService $compatbilityService,
+        AgesService $agesService
+    ) {
         $this->bookRepository = $bookRepository;
         $this->statisticParser = $statisticParser;
+        $this->compatbilityService = $compatbilityService;
+        $this->agesService = $agesService;
     }
 
     public function showStatistics(string $parameter): array
@@ -39,12 +49,11 @@ class StatisticService
 
         /** @var Book $book */
         foreach ($books as $book) {
-            $booksResults[] = new BookDTO(
-                $book->getName(),
-                $book->getCompatibility($nameOfBook),
-                $book->getBookDate()->format('Y-m-d'),
-                $book->getAverageAgeFor(Review::SEX_FEMALE),
-                $book->getAverageAgeFor(Review::SEX_MALE)
+            $booksResults[] = new StatisticViewModel(
+                $book,
+                $this->compatbilityService->getCompatibilityOf($book->getName(), $nameOfBook),
+                $this->agesService->getAverageAgeForReviews($book->getReviews(), Review::SEX_FEMALE),
+                $this->agesService->getAverageAgeForReviews($book->getReviews(), Review::SEX_MALE)
             );
         }
 

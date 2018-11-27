@@ -54,35 +54,8 @@ class Book
         return $this->name;
     }
 
-    public function getCompatibility(string $keywords): int
-    {
-        $percentage = 0;
-        similar_text(strtolower($this->name), $keywords, $percentage);
-
-        return $percentage;
-    }
-
     public function getBookDate(): \DateTime
     {
         return $this->bookDate;
-    }
-
-    public function getAverageAgeFor(string $sex): float
-    {
-        $avgAge = [];
-        $average = 0;
-
-        /** @var Review $review */
-        foreach ($this->getReviews() as $review) {
-            if ($review->getSex() == $sex) {
-                $avgAge[] = $review->getAge();
-            }
-        }
-
-        if (count($avgAge)) {
-            $average = array_sum($avgAge)/count($avgAge);
-        }
-
-        return $average;
     }
 }

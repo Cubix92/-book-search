@@ -3,6 +3,8 @@
 namespace Application\Factory;
 
 use Application\Model\Book;
+use Application\Service\AgesService;
+use Application\Service\CompatibilityService;
 use Application\Service\StatisticParser;
 use Application\Service\StatisticService;
 use Doctrine\ORM\EntityManager;
@@ -14,7 +16,9 @@ class StatisticServiceFactory
     {
         $bookRepository = $container->get(EntityManager::class)->getRepository(Book::class);
         $statisticParser = $container->get(StatisticParser::class);
+        $compatibilityService = $container->get(CompatibilityService::class);
+        $agesService = $container->get(AgesService::class);
 
-        return new StatisticService($bookRepository, $statisticParser);
+        return new StatisticService($bookRepository, $statisticParser, $compatibilityService, $agesService);
     }
 }

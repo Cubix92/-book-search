@@ -3,12 +3,12 @@
 namespace Application\Repository;
 
 use Application\Model\Book;
-use Application\Service\StatisticContainer;
+use Application\Service\Statistic\StatisticParameters;
 use Doctrine\ORM\EntityRepository;
 
 class BookRepository extends EntityRepository
 {
-    public function searchForStatistics(StatisticContainer $statisticParameters): array
+    public function searchForStatistics(StatisticParameters $statisticParameters): array
     {
         $queryBuilder = $this->getEntityManager()->createQueryBuilder();
         $queryBuilder->select('b,r')
