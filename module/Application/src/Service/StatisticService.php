@@ -59,7 +59,11 @@ class StatisticService
         }
 
         usort($booksResults, function($a, $b) {
-            return $a->compatibility < $b->compatibility;
+            /**
+             * @var StatisticViewModel $a
+             * @var StatisticViewModel $b
+             */
+            return $a->getCompatibility() < $b->getCompatibility();
         });
 
         return $booksResults;

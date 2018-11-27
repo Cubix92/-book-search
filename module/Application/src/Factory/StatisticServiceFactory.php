@@ -5,7 +5,7 @@ namespace Application\Factory;
 use Application\Model\Book;
 use Application\Service\AgesService;
 use Application\Service\CompatibilityService;
-use Application\Service\StatisticParser;
+use Application\Service\Statistic\StatisticParser;
 use Application\Service\StatisticService;
 use Doctrine\ORM\EntityManager;
 use Interop\Container\ContainerInterface;

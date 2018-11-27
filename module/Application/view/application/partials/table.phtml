@@ -8,11 +8,11 @@
     </tr>
     <?php foreach ($this->books as $book) : ?>
         <tr>
-            <td><?= $this->escapeHtml($book->name) ?></td>
-            <td><?= $book->compatibility ?>%</td>
-            <td><?= $book->bookDate ?></td>
-            <td><?= number_format($book->femaleAVG, 2, '.', ''); ?></td>
-            <td><?= number_format($book->maleAVG, 2, '.', ''); ?></td>
+            <td><?= $this->escapeHtml($book->getName()) ?></td>
+            <td><?= $book->getCompatibility() ?>%</td>
+            <td><?= $book->getBookDate() ?></td>
+            <td><?= number_format($book->getFemaleAVG(), 2, '.', ''); ?></td>
+            <td><?= number_format($book->getMaleAVG(), 2, '.', ''); ?></td>
         </tr>
     <?php endforeach; ?>
 </table>
