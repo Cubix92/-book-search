@@ -6,15 +6,20 @@ use Application\Model\Book;
 
 class StatisticViewModel
 {
-    public $name;
+    /** @var string $name */
+    private $name;
 
-    public $compatibility;
+    /** @var int $compatibility */
+    private $compatibility;
 
-    public $bookDate;
+    /** @var \DateTime $bookDate */
+    private $bookDate;
 
-    public $femaleAVG;
+    /** @var float $femaleAVG */
+    private $femaleAVG;
 
-    public $maleAVG;
+    /** @var float $maleAVG */
+    private $maleAVG;
 
     public function __construct(Book $book, int $compatibility, float $femaleAVG, float $maleAVG)
     {
@@ -23,5 +28,30 @@ class StatisticViewModel
         $this->bookDate = $book->getBookDate()->format('Y-m-d');
         $this->femaleAVG = $femaleAVG;
         $this->maleAVG = $maleAVG;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function getCompatibility(): int
+    {
+        return $this->compatibility;
+    }
+
+    public function getBookDate(): string
+    {
+        return $this->bookDate;
+    }
+
+    public function getFemaleAVG(): float
+    {
+        return $this->femaleAVG;
+    }
+
+    public function getMaleAVG(): float
+    {
+        return $this->maleAVG;
     }
 }
