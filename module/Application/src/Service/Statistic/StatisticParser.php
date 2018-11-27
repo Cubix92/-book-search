@@ -1,8 +1,6 @@
 <?php
 
-namespace Application\Service;
-
-use Application\Service\Statistic\StatisticParameters;
+namespace Application\Service\Statistic;
 
 class StatisticParser
 {

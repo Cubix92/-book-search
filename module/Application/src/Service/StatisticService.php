@@ -5,6 +5,7 @@ namespace Application\Service;
 use Application\Model\Book;
 use Application\Model\Review;
 use Application\Repository\BookRepository;
+use Application\Service\Statistic\StatisticParser;
 use Application\Service\Statistic\StatisticViewModel;
 
 class StatisticService
