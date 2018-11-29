@@ -29,12 +29,13 @@ class ReviewTest extends TestCase
             'book' => $book
         ];
 
+        /** @var Review $review */
         $review = $reflectionHydrator->hydrate($data, new Review);
 
         return $review;
     }
 
-    public function testEntityGetsPropertiesCorrectly()
+    public function testReviewGetsPropertiesCorrectly()
     {
         $reivew = $this->createReview();
 

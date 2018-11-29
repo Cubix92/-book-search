@@ -47,7 +47,7 @@ class BookTest extends TestCase
         return $book;
     }
 
-    public function testEntityGetsPropertiesCorrectly()
+    public function testBookGetsPropertiesCorrectly()
     {
         $book = $this->createBook();
 
