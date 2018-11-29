@@ -35,12 +35,22 @@ class Review
      */
     protected $sex;
 
-    public function getAge()
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    public function getBook(): Book
+    {
+        return $this->book;
+    }
+
+    public function getAge(): int
     {
         return $this->age;
     }
 
-    public function getSex()
+    public function getSex(): string
     {
         return $this->sex;
     }
