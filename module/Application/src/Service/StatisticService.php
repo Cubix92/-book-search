@@ -44,7 +44,7 @@ class StatisticService
         return $this->prepareStatistics($books, $statisticParameters['name']);
     }
 
-    protected function prepareStatistics(array $books, string $nameOfBook): array
+    public function prepareStatistics(array $books, string $nameOfBook): array
     {
         $booksResults = [];
 

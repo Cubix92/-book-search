@@ -10,6 +10,7 @@ class BookRepository extends EntityRepository
 {
     public function searchForStatistics(StatisticParameters $statisticParameters): array
     {
+        var_dump('ok');die;
         $queryBuilder = $this->getEntityManager()->createQueryBuilder();
         $queryBuilder->select('b,r')
             ->from(Book::class, 'b')
