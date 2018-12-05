@@ -72,12 +72,15 @@ class StatisticServiceTest extends AbstractHttpControllerTestCase
         $statisticParametersFake = new StatisticParameters();
         $statisticParametersFake['name'] = "sample_name";
 
-        $this->statisticParser->parse('ZieLoNa MiLa|age>30')->willReturn($statisticParametersFake);
         $this->entityManager->getRepository(Book::class)->willReturn($this->bookRepository);
-        $this->bookRepository->searchForStatistics($statisticParametersFake)->willReturn($books);
 
-        $this->statisticParser->parse(Argument::type('string'))->shouldBeCalled();
-        $this->bookRepository->searchForStatistics(Argument::type(StatisticParameters::class))->shouldBeCalled();
+        $this->statisticParser->parse(Argument::type('string'))
+            ->willReturn($statisticParametersFake)
+            ->shouldBeCalled();
+
+        $this->bookRepository->searchForStatistics(Argument::type(StatisticParameters::class))
+            ->willReturn($books)
+            ->shouldBeCalled();
 
         $statisticService = $this->getApplicationServiceLocator()->get(StatisticService::class);
         $this->assertInternalType('array', $statisticService->showStatistics('ZieLoNa MiLa|age>30'));
